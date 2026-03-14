@@ -41,9 +41,19 @@ export default function MyBalanceCard({ balances, debts, currentUserId }) {
       )}
 
       {owes && (
-        <p className="text-lg font-bold text-orange-700 dark:text-orange-400 mb-2">
-          You owe ₹{myBalance.balance.toLocaleString("en-IN")}
-        </p>
+        <>
+          <p className="text-lg font-bold text-orange-700 dark:text-orange-400 mb-2">
+            You owe ₹{myBalance.balance.toLocaleString("en-IN")}
+          </p>
+          <div className="flex items-start gap-2 p-3 rounded-xl bg-orange-100/80 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 mb-1">
+            <svg className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p className="text-xs text-orange-700 dark:text-orange-300">
+              Please check once and pay by 30th/31st of the month. No new expenses will be added after that, so the final amount won&apos;t change. Copy the GPay number below and settle your dues.
+            </p>
+          </div>
+        </>
       )}
 
       {!isOwed && !owes && (

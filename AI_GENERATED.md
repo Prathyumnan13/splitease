@@ -98,10 +98,11 @@ npm install
 cat > .env << 'EOF'
 # keep Neon credentials secure: do not expose them to client-side code
 
-DATABASE_URL='postgresql://neondb_owner:npg_4W3EoAnxTYyw@ep-holy-star-amzbylwl-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
-JWT_SECRET='splitapp_s3cure_jwt_k3y_2026_x7m9'
+DATABASE_URL='your_neon_connection_string_here'
+JWT_SECRET='your_jwt_secret_here'
 EOF
 ```
+> Get your Neon connection string from [console.neon.tech](https://console.neon.tech) → your project → Connection Details.
 
 ### 4. Create database tables
 Go to [Neon SQL Editor](https://console.neon.tech) and run the contents of `src/db/setup.sql`:
