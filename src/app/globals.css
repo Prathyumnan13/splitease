@@ -63,9 +63,42 @@ button, a, input, select, textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* PWA standalone mode fixes */
+html, body {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Status bar area in standalone mode — fill with header color */
+@media all and (display-mode: standalone) {
+  body::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9999;
+  }
+}
+
+@media all and (display-mode: standalone) and (prefers-color-scheme: dark) {
+  body::before {
+    background: rgba(15, 23, 42, 0.8);
+  }
+}
+
 /* Safe area for notched devices */
 body {
   padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 /* Custom scrollbar */

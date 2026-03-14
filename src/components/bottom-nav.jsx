@@ -40,7 +40,7 @@ export default function BottomNav({ userName }) {
     <>
       {/* Top bar - desktop only */}
       <header className="hidden sm:flex items-center justify-between px-6 py-3 bg-white/80 dark:bg-slate-900/80
-        backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 sticky top-[env(safe-area-inset-top)] z-40">
         <Link href="/expenses" className="text-lg font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
           SplitEase
         </Link>
@@ -77,7 +77,7 @@ export default function BottomNav({ userName }) {
 
       {/* Mobile top bar */}
       <header className="sm:hidden flex items-center justify-between px-4 py-3 bg-white/80 dark:bg-slate-900/80
-        backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40">
+        backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 sticky top-[env(safe-area-inset-top)] z-40">
         <span className="text-lg font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
           SplitEase
         </span>
