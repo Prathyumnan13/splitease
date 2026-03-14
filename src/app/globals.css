@@ -67,7 +67,6 @@ button, a, input, select, textarea {
 html, body {
   height: 100%;
   overflow: auto;
-  overscroll-behavior-y: none;
   -webkit-overflow-scrolling: touch;
 }
 
