@@ -23,9 +23,16 @@ export default function InstallPrompt() {
     const dismissed = sessionStorage.getItem("pwa-install-dismissed");
     if (dismissed || standalone) return;
 
-    // Android / Chrome "beforeinstallprompt"
+    // Check if beforeinstallprompt was already captured globally (race condition fix)
+    if (window.__pwaInstallPrompt) {
+      setDeferredPrompt(window.__pwaInstallPrompt);
+      setShowBanner(true);
+    }
+
+    // Also listen for future events
     const handler = (e) => {
       e.preventDefault();
+      window.__pwaInstallPrompt = e;
       setDeferredPrompt(e);
       setShowBanner(true);
     };
