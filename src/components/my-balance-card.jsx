@@ -50,7 +50,7 @@ export default function MyBalanceCard({ balances, debts, currentUserId }) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <p className="text-xs text-orange-700 dark:text-orange-300">
-              Please check once and pay by 30th/31st of the month. No new expenses will be added after that, so the final amount won&apos;t change. Copy the GPay number below and settle your dues.
+              Please check once and pay by 30th/31st of the month. No new expenses will be added after that, so the final amount won&apos;t change, That's why paying on that dates are recommended. Copy the GPay number below and settle your dues.
             </p>
           </div>
         </>
