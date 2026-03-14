@@ -37,13 +37,22 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* TEMP: removed preventDefault so Chrome shows its own default install bar */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.__pwaInstallPrompt = null;
+              window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                window.__pwaInstallPrompt = e;
+              });
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.className} antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100`}>
         <RegisterSW />
         {session && <BottomNav userName={session.name} />}
-        {/* TEMP: hidden custom install prompt */}
-        {/* {session && <InstallPrompt />} */}
+        {session && <InstallPrompt />}
         <main className={`min-h-screen ${session ? "pb-20 sm:pb-4" : ""}`}>
           {children}
         </main>
