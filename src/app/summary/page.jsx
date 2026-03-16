@@ -9,6 +9,7 @@ import MonthSelector from "@/components/month-selector";
 import SummaryTable from "@/components/summary-table";
 import WhoPaysWhomTable from "@/components/who-pays-whom-table";
 import MyBalanceCard from "@/components/my-balance-card";
+import SettlementHistory from "@/components/settlement-history";
 
 export const metadata = {
   title: "Summary — SplitEase",
@@ -77,33 +78,8 @@ export default async function SummaryPage({ searchParams }) {
         <WhoPaysWhomTable debts={debts} month={month} />
       </div>
 
-      {/* Settlement History */}
-      {settlements.length > 0 && (
-        <div className="mt-6">
-          <h2 className="text-lg font-bold mb-3">Settlement History</h2>
-          <div className="space-y-2">
-            {settlements.map((s) => (
-              <div
-                key={s.id}
-                className="flex items-center gap-3 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/20
-                  border border-emerald-100 dark:border-emerald-800 text-sm"
-              >
-                <svg className="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="flex-1">
-                  <span className="font-medium">{s.from_name}</span>
-                  <span className="text-slate-500 mx-1">paid</span>
-                  <span className="font-medium">{s.to_name}</span>
-                </span>
-                <span className="font-bold text-emerald-700 dark:text-emerald-400">
-                  ₹{parseFloat(s.amount).toLocaleString("en-IN")}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Settlement History with Undo */}
+      <SettlementHistory settlements={settlements} />
     </div>
   );
 }
